@@ -31,7 +31,7 @@ public class IntentoServerThread extends Thread{
 	{
 		if(numero==1)
 		{
-			Path fileLocation = Paths.get("/home/s2g2/Video500.mp4");
+			Path fileLocation = Paths.get("/home/s2g2/servidorTCP/Video500.mp4");
 			archivo = Files.readAllBytes(fileLocation);
 
 			byte[] hash2 = new byte[61440];
@@ -41,7 +41,7 @@ public class IntentoServerThread extends Thread{
 		}
 		else 
 		{
-			Path fileLocation = Paths.get("/home/s2g2/Video500.mp4");
+			Path fileLocation = Paths.get("/home/s2g2/servidorTCP/Video500.mp4");
 			archivo = Files.readAllBytes(fileLocation);
 
 			byte[] hash2 = new byte[61440];
