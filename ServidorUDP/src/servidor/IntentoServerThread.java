@@ -38,6 +38,7 @@ public class IntentoServerThread extends Thread{
 			MessageDigest md = MessageDigest.getInstance("SHA-1");
 			hash2 = md.digest(archivo); 
 			hash = hash2;
+			System.out.println("Hice hash para el video de 500");
 		}
 		else 
 		{
@@ -48,6 +49,7 @@ public class IntentoServerThread extends Thread{
 			MessageDigest md = MessageDigest.getInstance("SHA-1");
 			hash2 = md.digest(archivo); 
 			hash = hash2;
+			System.out.println("Hice hash para el video de 250");
 		}
 	}
 
@@ -81,11 +83,13 @@ public class IntentoServerThread extends Thread{
 					byte[] temp = Arrays.copyOfRange(archivo,g,g+61440);
 					paquete = new DatagramPacket(temp, temp.length, direccion, puerto);
 					socket.send(paquete);
+					System.out.println("envio paquete " + g);
 				}
 
 				byte[] temp = Arrays.copyOfRange(archivo,513540469,513544192);
 				paquete = new DatagramPacket(temp, temp.length, direccion, puerto);
 				socket.send(paquete);
+				System.out.println("envie el ultimo");
 			}
 			else
 			{
@@ -110,10 +114,12 @@ public class IntentoServerThread extends Thread{
 
 					paquete = new DatagramPacket(temp2, temp2.length, direccion, puerto);
 					socket.send(paquete);
+					System.out.println("envio paquete " + p);
 				}
 				byte[] temp2 = Arrays.copyOfRange(archivo,241875155,241876992);
 				paquete = new DatagramPacket(temp2, temp2.length, direccion, puerto);
 				socket.send(paquete);
+				System.out.println("envie el ultimo");
 			}
 
 			socket.close();
