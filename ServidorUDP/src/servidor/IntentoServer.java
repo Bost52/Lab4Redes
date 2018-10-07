@@ -52,7 +52,7 @@ public class IntentoServer {
 				serverSocket.receive(recibido);
 				direcciones[pos] = recibido.getAddress();
 				puertos[pos] = recibido.getPort();
-
+				System.out.println(direcciones[pos] + " " + puertos[pos]);
 				pos++;
 			}
 		}
