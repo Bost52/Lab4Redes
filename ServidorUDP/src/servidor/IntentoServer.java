@@ -39,22 +39,21 @@ public class IntentoServer {
 		DatagramSocket serverSocket = new DatagramSocket(PUERTO_SERVIDOR);
 		byte[] buf;
 		DatagramPacket recibido;
-		Integer pos = 0;
+		int pos = 0;
 
 		InetAddress[] direcciones = new InetAddress[NUMERO_CONEXIONES];
 		int[] puertos = new int[NUMERO_CONEXIONES];
 
 		while(pos < NUMERO_CONEXIONES)
 		{
-			synchronized(pos){
-				buf = new byte[256];
-				recibido = new DatagramPacket(buf, buf.length);
-				serverSocket.receive(recibido);
-				direcciones[pos] = recibido.getAddress();
-				puertos[pos] = recibido.getPort();
-				System.out.println(direcciones[pos] + " " + puertos[pos]);
-				pos++;
-			}
+			System.out.println("entra");
+			buf = new byte[256];
+			recibido = new DatagramPacket(buf, buf.length);
+			serverSocket.receive(recibido);
+			direcciones[pos] = recibido.getAddress();
+			puertos[pos] = recibido.getPort();
+			System.out.println(direcciones[pos] + "/" + puertos[pos] + " direccion/puerto");
+			pos++;
 		}
 
 		finConexiones = System.currentTimeMillis();
@@ -64,6 +63,7 @@ public class IntentoServer {
 		for(int x = 0; x < puertos.length; x++)
 		{
 			new IntentoServerThread(direcciones[x], puertos[x], ARCHIVO).start();
+			System.out.println("Desplegado el thread " + x);
 		}
 		System.out.println("Desplegados todos los threads");
 		finThreads = System.currentTimeMillis();
